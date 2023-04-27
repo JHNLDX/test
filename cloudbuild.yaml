@@ -1,7 +1,11 @@
 steps:
-  - name: 'gcr.io/cloud-builders/mvn'
-    args: ['package', '-Dmaven.test.skip=true']
+  - name: 'maven:3.8.3-openjdk-11'
+    args: ['clean', 'package', '-Dmaven.test.skip=true']
     id: 'A'
+
+#    steps:
+#      - name: 'maven:3.8.3-openjdk-11'
+#        args: [ 'mvn', 'clean', 'install' ]
 
 #  - name: 'gcr.io/cloud-builders/gcloud'
 #    entrypoint: 'bash'
