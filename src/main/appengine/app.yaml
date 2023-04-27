@@ -1,5 +1,5 @@
 runtime: java17
-#entrypoint: java -Dspring.profiles.active=dev -Xmx512m -jar becas-back-1.0.jar
+entrypoint: java -Xmx512m -jar demo1-1.0.jar
 #instance_class: F2
 #env_variables:
 #  PG_DB_USERNAME: 'DATA1'
