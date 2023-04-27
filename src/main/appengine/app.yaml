@@ -1,12 +1,12 @@
 runtime: java17
 entrypoint: java -Xmx512m -jar demo1-1.0.jar
-#instance_class: F2
+instance_class: F2
 #env_variables:
 #  PG_DB_USERNAME: 'DATA1'
 #  PG_DB_PASSWORD: 'DATA2'
-#automatic_scaling:
-#  min_idle_instances: 1
-#  max_idle_instances: 1
+automatic_scaling:
+  min_idle_instances: 1
+  max_idle_instances: 1
 #
 ##manual_scaling:
 ##  instances: 1
