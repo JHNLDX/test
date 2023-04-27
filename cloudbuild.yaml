@@ -1,5 +1,5 @@
 steps:
-  - name: 'gcr.io/cloud-builders/mvn-jdk-17'
+  - name: 'gcr.io/cloud-builders/mvn'
     args: ['package', '-Dmaven.test.skip=true']
     id: 'A'
 
@@ -19,7 +19,7 @@ steps:
 
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'app', 'deploy', 'demo1-0.1.jar', '--version=1', '--appyaml=/workspace/src/main/appengine/app.yaml']
+    args: [ 'app', 'deploy', 'demo1-1.0.jar', '--version=1', '--appyaml=/workspace/src/main/appengine/app.yaml']
     dir: "target"
     id: 'B'
     waitFor: [ 'A' ]
