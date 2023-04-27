@@ -1,6 +1,6 @@
 steps:
   - name: 'maven:3.8.3-openjdk-11'
-    args: ['clean', 'package', '-Dmaven.test.skip=true']
+    args: ['mvn', 'clean', 'package', '-Dmaven.test.skip=true']
     id: 'A'
 
 #    steps:
