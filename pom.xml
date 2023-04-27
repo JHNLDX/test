@@ -8,7 +8,7 @@
 		<version>2.7.10</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.laudex</groupId>
+	<groupId>com.laudex.demo1</groupId>
 	<artifactId>demo1</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
