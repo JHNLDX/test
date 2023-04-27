@@ -1,0 +1,28 @@
+steps:
+  - name: 'gcr.io/cloud-builders/mvn'
+    args: ['package', '-Dmaven.test.skip']
+    env:
+      - 'PG_DB_USERNAME=${_PG_DB_USERNAME}'
+      - 'PG_DB_PASSWORD=${_PG_DB_PASSWORD}'
+    id: 'A'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    id: 'B'
+    waitFor: [ 'A' ]
+    args:
+      - '-c'
+      - |
+        sed -i "s/DATA1/${_PG_DB_USERNAME}/g" /workspace/src/main/appengine/app.yaml;
+        sed -i "s/DATA2/${_PG_DB_PASSWORD}/g" /workspace/src/main/appengine/app.yaml;
+    env:
+      - 'PG_DB_USERNAME=${_PG_DB_USERNAME}'
+      - 'PG_DB_PASSWORD=${_PG_DB_PASSWORD}'
+
+
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [ 'app', 'deploy', 'becas-users-1.0.jar', '--version=1', '--appyaml=/workspace/src/main/appengine/app.yaml']
+    dir: "target"
+    id: 'C'
+    waitFor: [ 'B' ]
